@@ -125,7 +125,7 @@ app.delete('/api/waiting/:id', requireAuth, (req, res) => {
 });
 
 // ── Download DB Backup ────────────────────────────────────────────────────────
-app.get('/api/download-db', authCheck, (req, res) => {
+app.get('/api/download-db', requireAuth, (req, res) => {
   try {
     if (!fs.existsSync(DB_FILE)) {
       return res.status(404).json({ error: 'Database file not found' });
